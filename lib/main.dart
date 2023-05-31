@@ -28,20 +28,41 @@ class _MyAppState extends State<MyApp> {
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text("Programmadan chiqish"),
-                    content: Text(
-                        "Siz rostan ham ushbu programmadan chiqishni xohlaysizmi?"),
-                    actions: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text("Yo'q")),
-                      TextButton(onPressed: () {
-                        SystemNavigator.pop();
-                      }, child: Text("Ha"))
-                    ],
+                  return Dialog(
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ConstrainedBox(
+                            constraints: BoxConstraints(maxHeight: 300),
+                            child: TextField(
+                              maxLines: null,
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  hintText: "Email"),
+                            ),
+                          ),
+                          SizedBox(height: 10,),
+                          TextField(
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: "parol"),
+                          ),
+                          SizedBox(height: 10,),
+                          MaterialButton(
+                            onPressed: () {},
+                            child: Text(
+                              "OK",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            color: Colors.green,
+                          )
+                        ],
+                      ),
+                    ),
                   );
                 });
           },
